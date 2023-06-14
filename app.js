@@ -8,12 +8,13 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
 const dbURI = process.env.CONNECTION_STRING;
 
 mongoose
   .connect(dbURI)
   .then(() => {
-    app.listen(3000);
+    app.listen(PORT);
   })
   .catch(console.log);
 

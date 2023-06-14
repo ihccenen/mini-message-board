@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, sans-serif;
+}
+
+.grid {
+  display: grid;
+  justify-items: center;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.wrapper {
+  gap: 3rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 1.7rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.new-message,
+.go-back,
+.submit-message-btn {
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  background-color: #b784c4;
+  color: #ffffff;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.35);
+}
+
+.new-message:hover,
+.go-back,
+.submit-message-btn:hover {
+  opacity: 0.9;
+}
+
+.messages-list {
+  width: 100%;
+}
+
+.message-wrapper {
+  padding: 1rem 3rem;
+  word-break: break-all;
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.35);
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.message-wrapper > p {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.no-messages {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.form {
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid;
+}
+
+textarea {
+  resize: none;
+}
+
+.submit-message-btn {
+  border: none;
+  max-width: min-content;
+  align-self: center;
+}
+
+.submit-message-btn:hover {
+  cursor: pointer;
+}

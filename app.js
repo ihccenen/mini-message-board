@@ -1,9 +1,21 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 
 const app = express();
+
+const dbURI = process.env.CONNECTION_STRING;
+
+mongoose
+  .connect(dbURI)
+  .then(() => {
+    app.listen(3000);
+  })
+  .catch(console.log);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -17,5 +29,3 @@ app.use('/', indexRouter);
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Page not found' });
 });
-
-app.listen(3000);

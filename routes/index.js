@@ -1,23 +1,23 @@
-const messages = [
-  {
-    text: 'Hi there!',
-    user: 'Amando',
-    added: new Date(),
-  },
-  {
-    text: 'Hello World!',
-    user: 'Charles',
-    added: new Date(),
-  },
-];
-
 const express = require('express');
 const moment = require('moment');
+const Message = require('../models/Message');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Mini Messageboard', messages, moment });
+  Message.find()
+    .sort({ added: -1 })
+    .then((response) => {
+      res.render('index', {
+        title: 'Mini Message Board',
+        messages: response,
+        moment,
+      });
+    })
+    .catch(() => res.render('error', {
+      title: 'Error',
+      message: 'Failed to get messages from database',
+    }));
 });
 
 router.get('/new', (req, res) => {
@@ -26,10 +26,20 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   const { messageUser, messageText } = req.body;
+  const message = new Message({
+    text: messageText,
+    user: messageUser,
+  });
 
-  messages.push({ text: messageText, user: messageUser, added: new Date() });
-
-  res.redirect('/');
+  message
+    .save()
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch(() => res.render('error', {
+      title: 'Error',
+      message: 'Failed to add message to database',
+    }));
 });
 
 module.exports = router;

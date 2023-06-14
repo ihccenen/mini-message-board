@@ -2,18 +2,20 @@
 <html lang="en">
   <%- include('./partials/head.ejs') %>
   <body>
-    <form method="POST" actions="/new">
-      <label for="messageUser">
-        Username:
-        <input type="text" name="messageUser" id="messageUser" required />
-      </label>
+    <div class="wrapper grid">
+      <form class="form flex" method="POST" actions="/new">
+        <label class="flex" for="messageUser">
+          Username*:
+          <input type="text" name="messageUser" id="messageUser" required />
+        </label>
 
-      <label for="messageText">
-        Message:
-        <textarea name="messageText" id="messageText" required></textarea>
-      </label>
+        <label class="flex" for="messageText">
+          Message*:
+          <textarea name="messageText" id="messageText" required></textarea>
+        </label>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button class="submit-message-btn" type="submit">Submit</button>
+      </form>
+    </div>
   </body>
 </html>

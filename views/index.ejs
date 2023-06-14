@@ -2,16 +2,23 @@
 <html lang="en">
   <%- include('./partials/head.ejs') %>
   <body>
-    <h1><%= title %></h1>
-    <a href="/new">New Message</a>
-    <div>
-      <% if (messages.length > 0) { %>
-        <% messages.forEach((message) => { %>
-          <h2><%= message.user %></h2>
-          <p><%= message.text %></p>
-          <p><%= moment(message.added).format("MMMM Do YYYY, h:mm:ss a") %></p>
-        <% }) %>
-      <% } %>
+    <div class="wrapper grid">
+      <h1><%= title %></h1>
+      <a class="new-message" href="/new">New Message</a>
+      <div class="messages-list flex">
+        <% if (messages.length > 0) { %>
+          <h2>Messages:</h2>
+          <% messages.forEach((message) => { %>
+            <div class="message-wrapper flex">
+              <h3><%= message.user %>:</h2>
+              <p><%= message.text %></p>
+              <p><%= moment(message.added).format("MMMM Do YYYY") %>.</p>
+            </div>
+          <% }) %>
+        <% } else {%>
+              <h2 class="no-messages">No messages yet.</h2>
+        <% } %>
+      </div>
     </div>
   </body>
 </html>
